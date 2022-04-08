@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="estilos.css" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coder House</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilos.css">
   </head>
-  <body>
-      <h1>👋 Entregable de Ciclos Coder!</h1>
-      <head>
-          Creando un algoritmo utilizando ciclos
-        </head>
-        
-    <script src="ciclos.js"></script>
-  </body>
+
+<body>
+  <div class="container">
+    <h1>Desafíos Coder!</h1>
+    <hr/>
+  </div>
+
+  <div class="container py-2">
+    <p class="lead">Ingrese Mercaderia</p>
+    <form>
+      <input id="codigo" type="number" placeholder="Ingresa el Codigo" class="form-control my-2"></input>
+      <input id="descripcion" type="text" placeholder="Ingresa el Nombre" class="form-control my-2">
+      <input id="rubro" type="text" placeholder="Ingresa el Rubro" class="form-control my-2">
+      </form>
+      <form oninput="precio.value=(parseInt(rentabilidad.value) * parseInt(costo.value)/100)+parseInt(costo.value)">
+      <input type="number" id="costo" placeholder="Ingresa el Costo" class="form-control my-2"/>
+      <input type="number" id="rentabilidad" placeholder="Expresado en numero" class="form-control my-2"/>
+      <output type="number" id="precio" for="costo rentabilidad costo" class="form-control my-2"></output>
+      <button id="boton" class="btn btn-success" type="reset" onclick="agregar();">Agregar</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <table class="table" id="tabla">
+      <thead class="thead-inverse">
+        <th>Codigo</th>
+        <th>Descripción</th>
+        <th>Rubro</th>
+        <th>Costo</th>
+        <th>Rentabilidad</th>
+        <th>Precio de Venta</th>
+        </tr>
+        <tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+  <script src="agregar.js"></script>
+</body>
+
 </html>
