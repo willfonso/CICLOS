@@ -11,8 +11,7 @@ class Mercaderia {
     }
 }
 
-
-function agregar() {
+function agregar(e) {
     let codigoAgregar = document.getElementById("codigo").value;
     var descripcionAgregar = document.getElementById("descripcion").value;
     var rubroAgregar = document.getElementById("rubro").value;
@@ -32,7 +31,7 @@ function agregar() {
     console.log(nuevaMercaderia);
     baseDatos.push(nuevaMercaderia);
 
-    document.getElementById("tbody").innerHTML += `
+       document.getElementById("tbody").innerHTML += `
         <tr>
             <th>${nuevaMercaderia.codigo}</th>
             <th>${nuevaMercaderia.descripcion}</th>
@@ -40,7 +39,14 @@ function agregar() {
             <th>${nuevaMercaderia.costo}</th>
             <th>${nuevaMercaderia.rentabilidad}</th>
             <th>${nuevaMercaderia.precio}</th>
+            <button name="eliminar" class="btn btn-danger">Eliminar</button>
+
         </tr>
     `;
-
+    document.getElementById('tbody').addEventListener('click', function(e){
+        const nuevaMercaderia = new nuevaMercaderia();
+        nuevaMercaderia.eliminarProducto(e.target);
+        });
 }
+
+
