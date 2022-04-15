@@ -11,13 +11,6 @@ class Mercaderia {
     }
 }
 
-class UI{
-    eliminarProducto(element){
-        if(element.name === 'eliminar'){
-            console.log(element.parentElement);
-    }
-}}
-
 function agregar(e) {
     let codigoAgregar = document.getElementById("codigo").value;
     var descripcionAgregar = document.getElementById("descripcion").value.toUpperCase();
@@ -46,17 +39,14 @@ function agregar(e) {
             <th>${nuevaMercaderia.costo}</th>
             <th>${nuevaMercaderia.rentabilidad}</th>
             <th>${nuevaMercaderia.precio}</th>
-            <button id="eliminar" class="btn btn-danger" >Eliminar</button>
+            <button id="eliminar" class="btn btn-danger">Eliminar</button>
 
         </tr>
     `;
-    const imprimir = document.getElementById('boton');
-    imprimir.onclick = () => {agregar()};
+
 
     document.getElementById('eliminar').addEventListener('click', function(e){
         const ui = new UI();
-        ui.eliminarProducto(Mercaderia);
+        ui.eliminarProducto(element.target);
         });
-}
-
-
+    }
