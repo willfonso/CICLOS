@@ -11,13 +11,6 @@ class Mercaderia {
     }
 }
 
-class UI{
-    eliminarProducto(element){
-        if(element.name === 'eliminar'){
-            console.log(element.parentElement);
-    }
-}}
-
 function agregar(e) {
     let codigoAgregar = document.getElementById("codigo").value;
     var descripcionAgregar = document.getElementById("descripcion").value.toUpperCase();
@@ -34,10 +27,14 @@ function agregar(e) {
         rentabilidadAgregar,
         precioAgregar
     );
-
     console.log(nuevaMercaderia);
     baseDatos.push(nuevaMercaderia);
 
+    let index = baseDatos.length;
+if (codigoAgregar ==='' || descripcionAgregar === '' || rubroAgregar === '' || costoAgregar === '' || rentabilidadAgregar === ''){
+    return alert('Debes completar los campos');
+
+}
        document.getElementById("tbody").innerHTML += `
         <tr>
             <th>${nuevaMercaderia.codigo}</th>
@@ -46,17 +43,37 @@ function agregar(e) {
             <th>${nuevaMercaderia.costo}</th>
             <th>${nuevaMercaderia.rentabilidad}</th>
             <th>${nuevaMercaderia.precio}</th>
-            <button id="eliminar" class="btn btn-danger" >Eliminar</button>
-
+            <th><button data-index="${index}" type="button" name="eliminar" class="btn btn-danger btn-delete">Eliminar</button></th>
         </tr>
     `;
-    const imprimir = document.getElementById('boton');
-    imprimir.onclick = () => {agregar()};
+   function reiniciarFormulario() {
+        document.getElementById('formulario').reset();
+    }
+    reiniciarFormulario();
+    mostrarMensaje();
 
-    document.getElementById('eliminar').addEventListener('click', function(e){
-        const ui = new UI();
-        ui.eliminarProducto(Mercaderia);
+
+
+    var list = document.getElementsByClassName("btn-delete");
+    for (var i = 0; i < list.length; i++) {
+        list[i].onclick = null;
+        list[i].addEventListener('click', function(e){
+            e.target.parentElement.parentElement.remove();
         });
+    }
+
+   
 }
 
+function mostrarMensaje(message , cssClass){
+    const div = document.createElement('div');
+    div.className =`alert alert-${cssClass}`;
+    div.appendChild(document.createTextNode(message));
 
+   const container = document.querySelector('.container py-2');
+   const p = document.querySelector('#formulario');
+   const msg = container.insertBefore(div,p);
+
+   
+
+}
